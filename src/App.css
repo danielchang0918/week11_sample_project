@@ -175,7 +175,8 @@ body {
 }
 
 .btn.secondary:hover {
-    background: #dde6f4
+    background: #dde6f4;
+    transform: scale(1.05);
 }
 
 .btn.danger {

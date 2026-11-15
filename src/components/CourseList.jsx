@@ -43,6 +43,15 @@ export default function CourseList() {
     );
   }
 
+  //과목명 수정 함수
+  function handleEdit(id, editName){
+    setCourses(previous =>
+      previous.map(course => 
+        course.id === id ? {...course, name: editName} : course
+      )
+    );
+  }
+
   const doneCount = courses.filter(course => course.completed).length;
 
   return (
@@ -62,7 +71,7 @@ export default function CourseList() {
         <div className="list-head"><span>COURSE</span><span>CATEGORY</span><span>ACTIONS</span></div>
         {courses.length === 0 && <div className="empty">등록된 과목이 없습니다.</div>}
         {courses.map(course => (
-          <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
+          <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} onEdit={handleEdit}/>
         ))}
       </section>
     </>
