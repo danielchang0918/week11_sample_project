@@ -17,6 +17,20 @@ export default function CourseList() {
   function handleAdd(event) {
     event.preventDefault();
     // TODO: 빈 입력 검사, 새 과목 객체 생성, setCourses 호출, 입력창 초기화
+    if(!newName.trim()) return; 
+
+    const newId = Math.max(...courses.map(course => course.id), 0) + 1;
+
+    const newCourse = {
+      id: newId,
+      name: newName,
+      category: 'Major',
+      completed: false
+    }
+    
+    setCourses(previous => [...previous, newCourse]);
+
+    setNewName('');
   }
 
   // TODO 2 (필수): 완료 상태 변경 기능을 구현하세요.
